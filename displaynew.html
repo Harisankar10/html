@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hover Image and Text</title>
+    <style>
+        #content {
+            width: 300px;
+            height: 200px;
+            background-color: lightblue;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 20px;
+            color: darkblue;
+            border: 2px solid #000;
+            position: relative;
+        }
+        #newContent {
+            display: none;
+            text-align: center;
+        }
+
+        #newContent img {
+            max-width: 100%;
+            height: auto;
+        }
+	img {
+	width:400px;
+	height:500px;
+	}
+    </style>
+</head>
+<body>
+
+    <!-- Existing content on which mouse hover will trigger the event -->
+    <div id="content">
+        Hover over me!
+    </div>
+
+    <!-- New content to show on hover -->
+    <div id="newContent">
+        <img src="E:\hari\omen.webp" alt="New Image">
+        <p>New Image and Text!</p>
+    </div>
+
+    <script>
+        const content = document.getElementById('content');
+        const newContent = document.getElementById('newContent');
+
+        content.addEventListener('mouseover', () => {
+            newContent.style.display = 'block'; 
+        });
+
+
+        content.addEventListener('mouseout', () => {
+            newContent.style.display = 'none'; 
+        });
+    </script>
+    
+</body>
+</html>

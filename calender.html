@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Year Calendar Generator</title>
+  <style>
+    .calendar {
+      display: flex;
+      flex-wrap: wrap;
+    }
+    .month {
+      width: 250px;
+      margin: 10px;
+      padding: 10px;
+      border: 1px solid #ccc;
+      text-align: center;
+    }
+    .month h3 {
+      margin-top: 0;
+    }
+    .month .days {
+      display: grid;
+      grid-template-columns: repeat(7, 1fr);
+      grid-gap: 5px;
+    }
+    .month .days div {
+      padding: 5px;
+      text-align: center;
+    }
+    .month .days div.weekend {
+      background-color: #f0f0f0;
+    }
+    .month .days div.today {
+      background-color: yellow;
+    }
+  </style>
+</head>
+<body>
+  <h1>Calendar for a Year</h1>
+  <input type="number" id="yearInput" placeholder="Enter year" />
+  <button onclick="generateCalendar()">Generate Calendar</button>
+
+  <div id="calendar" class="calendar"></div>
+
+  <script>
+    function generateCalendar() {
+      const year = document.getElementById('yearInput').value;
+      if (!year || year < 1000 || year > 9999) {
+        alert('Please enter a valid year');
+        return;
+      }
+
+      const calendarDiv = document.getElementById('calendar');
+      calendarDiv.innerHTML = ''; // Clear any existing calendar
+
+      for (let month = 0; month < 12; month++) {
+        const monthDiv = document.createElement('div');
+        monthDiv.classList.add('month');
+
+        const monthName = new Date(year, month).toLocaleString('default', { month: 'long' });
+        monthDiv.innerHTML = `<h3>${monthName} ${year}</h3>`;
+
+        const daysDiv = document.createElement('div');
+        daysDiv.classList.add('days');
+
+      
+        const weekdays = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+        weekdays.forEach(day => {
+          const dayHeader = document.createElement('div');
+          dayHeader.textContent = day;
+          daysDiv.appendChild(dayHeader);
+        });
+
+        
+        const firstDay = new Date(year, month, 1).getDay();
+        const totalDays = new Date(year, month + 1, 0).getDate();
+
+        
+        for (let i = 0; i < firstDay; i++) {
+          const emptyDiv = document.createElement('div');
+          daysDiv.appendChild(emptyDiv);
+        }
+
+       
+        for (let day = 1; day <= totalDays; day++) {
+          const dayDiv = document.createElement('div');
+          dayDiv.textContent = day;
+
+          
+          const dayOfWeek = (firstDay + day - 1) % 7;
+          if (dayOfWeek === 0 || dayOfWeek === 6) {
+            dayDiv.classList.add('weekend');
+          }
+
+          
+          const today = new Date();
+          if (today.getFullYear() === year && today.getMonth() === month && today.getDate() === day) {
+            dayDiv.classList.add('today');
+          }
+
+          daysDiv.appendChild(dayDiv);
+        }
+
+        monthDiv.appendChild(daysDiv);
+        calendarDiv.appendChild(monthDiv);
+      }
+    }
+  </script>
+</body>
+</html>

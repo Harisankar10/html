@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JavaScript String and Math Functions</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      line-height: 1.6;
+      margin: 20px;
+      background-color: #f9f9f9;
+      color: #333;
+    }
+    h1, h2 {
+      color: Blue;
+    }
+    .example {
+      margin-bottom: 20px;
+      padding: 15px;
+      background: #f4f4f4;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+    }
+    .example code {
+      background: #eee;
+      padding: 2px 4px;
+      border-radius: 3px;
+    }
+    .output {
+      margin-top: 10px;
+      padding: 10px;
+      background: #e6f7ff;
+      border: 1px solid #b3e5fc;
+      border-radius: 5px;
+    }
+    button {
+      margin-top: 10px;
+      padding: 5px 10px;
+      background: #007BFF;
+      color: white;
+      border: none;
+      border-radius: 3px;
+      cursor: pointer;
+    }
+    button:hover {
+      background: #0056b3;
+    }
+  </style>
+</head>
+<body>
+  <h1>JavaScript String and Math Functions</h1>
+
+  <h2>String Object Functions</h2>
+
+  <div class="example">
+    <h3>1. <code>toUpperCase()</code></h3>
+    <p>Converts all characters in a string to uppercase.</p>
+    <code>Example: "hello".toUpperCase()</code>
+    <br><button onclick="stringToUpperCase()">Click here</button>
+    <div class="output" id="output-uppercase"></div>
+  </div>
+
+  <div class="example">
+    <h3>2. <code>substring()</code></h3>
+    <p>Extracts a portion of a string between two specified indices.</p>
+    <code>Example: "JavaScript".substring(0, 4)</code>
+    <br><button onclick="stringSubstring()">Click here</button>
+    <div class="output" id="output-substring"></div>
+  </div>
+
+  <div class="example">
+    <h3>3. <code>includes()</code></h3>
+    <p>Checks if a string contains a specified value.</p>
+    <code>Example: "Hello, World!".includes("World")</code>
+    <br><button onclick="stringIncludes()">Click here</button>
+    <div class="output" id="output-includes"></div>
+  </div>
+
+  <h2>Math Object Functions</h2>
+
+  <div class="example">
+    <h3>1. <code>Math.round()</code></h3>
+    <p>Rounds a number to the nearest integer.</p>
+    <code>Example: Math.round(4.6)</code>
+    <br><button onclick="mathRound()">Click here</button>
+    <div class="output" id="output-round"></div>
+  </div>
+
+  <div class="example">
+    <h3>2. <code>Math.random()</code></h3>
+    <p>Generates a random number between 0 (inclusive) and 1 (exclusive).</p>
+    <code>Example: Math.random()</code>
+    <br><button onclick="mathRandom()">Click here</button>
+    <div class="output" id="output-random"></div>
+  </div>
+
+  <div class="example">
+    <h3>3. <code>Math.max()</code></h3>
+    <p>Returns the largest of the given numbers.</p>
+    <code>Example: Math.max(10, 20, 30)</code>
+    <br><button onclick="mathMax()">Click here</button>
+    <div class="output" id="output-max"></div>
+  </div>
+
+  <script>
+    // String examples
+    function stringToUpperCase() {
+      const str = "hello";
+      const result = str.toUpperCase();
+      document.getElementById("output-uppercase").innerText = `Input: "${str}" -> Output: "${result}"`;
+    }
+
+    function stringSubstring() {
+      const str = "JavaScript";
+      const result = str.substring(0, 4);
+      document.getElementById("output-substring").innerText = `Input: "${str}" -> Output: "${result}"`;
+    }
+
+    function stringIncludes() {
+      const str = "Hello, World!";
+      const result = str.includes("World");
+      document.getElementById("output-includes").innerText = `Input: "${str}" -> Contains "World": ${result}`;
+    }
+
+    // Math examples
+    function mathRound() {
+      const num = 4.6;
+      const result = Math.round(num);
+      document.getElementById("output-round").innerText = `Input: ${num} -> Output: ${result}`;
+    }
+
+    function mathRandom() {
+      const result = Math.random();
+      document.getElementById("output-random").innerText = `Random number: ${result}`;
+    }
+
+    function mathMax() {
+      const numbers = [10, 20, 30];
+      const result = Math.max(...numbers);
+      document.getElementById("output-max").innerText = `Numbers: ${numbers.join(", ")} -> Largest: ${result}`;
+    }
+  </script>
+</body>
+</html>
